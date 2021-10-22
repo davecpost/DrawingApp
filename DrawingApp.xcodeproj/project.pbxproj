@@ -14,6 +14,10 @@
 		7DBF40F3272352ED0094B1F9 /* DrawingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF40F2272352ED0094B1F9 /* DrawingAppTests.swift */; };
 		7DBF40FD272352ED0094B1F9 /* DrawingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF40FC272352ED0094B1F9 /* DrawingAppUITests.swift */; };
 		7DBF40FF272352ED0094B1F9 /* DrawingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF40FE272352ED0094B1F9 /* DrawingAppUITestsLaunchTests.swift */; };
+		7DBF410C2723537A0094B1F9 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF410B2723537A0094B1F9 /* CanvasView.swift */; };
+		7DBF410E272353A80094B1F9 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF410D272353A80094B1F9 /* DrawingView.swift */; };
+		7DBF4110272353C80094B1F9 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF410F272353C80094B1F9 /* Drawing.swift */; };
+		7DBF4112272354880094B1F9 /* DrawingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF4111272354880094B1F9 /* DrawingListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		7DBF40F8272352ED0094B1F9 /* DrawingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DBF40FC272352ED0094B1F9 /* DrawingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingAppUITests.swift; sourceTree = "<group>"; };
 		7DBF40FE272352ED0094B1F9 /* DrawingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7DBF410B2723537A0094B1F9 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		7DBF410D272353A80094B1F9 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		7DBF410F272353C80094B1F9 /* Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
+		7DBF4111272354880094B1F9 /* DrawingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,10 @@
 				7DBF40E3272352E60094B1F9 /* ContentView.swift */,
 				7DBF40E5272352ED0094B1F9 /* Assets.xcassets */,
 				7DBF40E7272352ED0094B1F9 /* Preview Content */,
+				7DBF410B2723537A0094B1F9 /* CanvasView.swift */,
+				7DBF410D272353A80094B1F9 /* DrawingView.swift */,
+				7DBF410F272353C80094B1F9 /* Drawing.swift */,
+				7DBF4111272354880094B1F9 /* DrawingListView.swift */,
 			);
 			path = DrawingApp;
 			sourceTree = "<group>";
@@ -259,6 +271,10 @@
 			files = (
 				7DBF40E4272352E60094B1F9 /* ContentView.swift in Sources */,
 				7DBF40E2272352E60094B1F9 /* DrawingAppApp.swift in Sources */,
+				7DBF410C2723537A0094B1F9 /* CanvasView.swift in Sources */,
+				7DBF410E272353A80094B1F9 /* DrawingView.swift in Sources */,
+				7DBF4110272353C80094B1F9 /* Drawing.swift in Sources */,
+				7DBF4112272354880094B1F9 /* DrawingListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
