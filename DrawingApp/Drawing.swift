@@ -8,7 +8,8 @@
 import Foundation
 import PencilKit
 
-struct Drawing {
+struct Drawing: Identifiable {
+    let id = UUID()
     let title: String
     let drawing: PKDrawing
     let image: UIImage

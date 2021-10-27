@@ -11,17 +11,20 @@ struct DrawingListView: View {
     private var placeholder = ["Hello", "World"]
     var body: some View {
         NavigationView {
-            VStack {
             List(placeholder, id: \.self) { drawing in
                 Text(drawing)
             }
-            NavigationLink(destination: {DrawingView()}, label: {
-                Image(systemName: "plus").font(.largeTitle)
-                
-            })
+            .navigationTitle("Drawings")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                NavigationLink(destination: {DrawingView()}, label: {
+                    Image(systemName: "plus")
+                    
+                })
+                }
             }
-                .navigationTitle("Drawings")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -20,7 +20,6 @@ extension CanvasView: UIViewRepresentable {
     func makeUIView(context: Context) -> PKCanvasView {
         canvasView.tool = PKInkingTool(.pen, color: .gray, width: 10)
         canvasView.drawingPolicy = .anyInput
-        canvasView.delegate = context.coordinator
         showToolPicker()
         return canvasView
     }
@@ -47,13 +46,5 @@ class Coordinator: NSObject {
     init(canvasView: Binding<PKCanvasView>, onSaved: @escaping () -> Void) {
         self.canvasView = canvasView
         self.onSaved = onSaved
-    }
-}
-
-extension Coordinator: PKCanvasViewDelegate {
-    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-        if !canvasView.drawing.bounds.isEmpty {
-            onSaved()
-        }
     }
 }

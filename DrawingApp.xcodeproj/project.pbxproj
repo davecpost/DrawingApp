@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D9851222729B03E0027ED37 /* DrawingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D9851202729B03E0027ED37 /* DrawingModel.xcdatamodeld */; };
+		7D9851242729B10D0027ED37 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9851232729B10D0027ED37 /* CoreDataStack.swift */; };
+		7D9851262729B20B0027ED37 /* DrawingEntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9851252729B20B0027ED37 /* DrawingEntityExtension.swift */; };
 		7DBF40E2272352E60094B1F9 /* DrawingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF40E1272352E60094B1F9 /* DrawingAppApp.swift */; };
 		7DBF40E4272352E60094B1F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF40E3272352E60094B1F9 /* ContentView.swift */; };
 		7DBF40E6272352ED0094B1F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DBF40E5272352ED0094B1F9 /* Assets.xcassets */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D9851212729B03E0027ED37 /* DrawingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawingModel.xcdatamodel; sourceTree = "<group>"; };
+		7D9851232729B10D0027ED37 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7D9851252729B20B0027ED37 /* DrawingEntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingEntityExtension.swift; sourceTree = "<group>"; };
 		7DBF40DE272352E60094B1F9 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DBF40E1272352E60094B1F9 /* DrawingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingAppApp.swift; sourceTree = "<group>"; };
 		7DBF40E3272352E60094B1F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,6 +85,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D98511F2729B0260027ED37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D9851202729B03E0027ED37 /* DrawingModel.xcdatamodeld */,
+				7D9851232729B10D0027ED37 /* CoreDataStack.swift */,
+				7D9851252729B20B0027ED37 /* DrawingEntityExtension.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7DBF40D5272352E50094B1F9 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +118,7 @@
 		7DBF40E0272352E60094B1F9 /* DrawingApp */ = {
 			isa = PBXGroup;
 			children = (
+				7D98511F2729B0260027ED37 /* Model */,
 				7DBF40E1272352E60094B1F9 /* DrawingAppApp.swift */,
 				7DBF40E3272352E60094B1F9 /* ContentView.swift */,
 				7DBF40E5272352ED0094B1F9 /* Assets.xcassets */,
@@ -274,7 +291,10 @@
 				7DBF410C2723537A0094B1F9 /* CanvasView.swift in Sources */,
 				7DBF410E272353A80094B1F9 /* DrawingView.swift in Sources */,
 				7DBF4110272353C80094B1F9 /* Drawing.swift in Sources */,
+				7D9851262729B20B0027ED37 /* DrawingEntityExtension.swift in Sources */,
+				7D9851222729B03E0027ED37 /* DrawingModel.xcdatamodeld in Sources */,
 				7DBF4112272354880094B1F9 /* DrawingListView.swift in Sources */,
+				7D9851242729B10D0027ED37 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +643,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7D9851202729B03E0027ED37 /* DrawingModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7D9851212729B03E0027ED37 /* DrawingModel.xcdatamodel */,
+			);
+			currentVersion = 7D9851212729B03E0027ED37 /* DrawingModel.xcdatamodel */;
+			path = DrawingModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7DBF40D6272352E50094B1F9 /* Project object */;
 }
