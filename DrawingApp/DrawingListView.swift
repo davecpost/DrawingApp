@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct DrawingListView: View {
-    private var placeholder = ["Hello", "World"]
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \DrawingEntity.date, ascending: true)])
+    private var drawingEntities: FetchedResults<DrawingEntity>
     var body: some View {
         NavigationView {
-            List(placeholder, id: \.self) { drawing in
-                Text(drawing)
+            List(drawingEntities, id: \.self) { drawing in
+                HStack {
+                    Text(drawing.name ?? "")
+                    Text(drawing.dateString() ?? "")
+                }
             }
             .navigationTitle("Drawings")
             .toolbar {

@@ -15,6 +15,8 @@ struct DrawingView: View {
     @State private var canvasView = PKCanvasView()
     @State private var drawing: Drawing? = nil
     @State private var deleteAlert = false
+    @State private var saveAlert = false
+    @State private var titleText = ""
     @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
     @Environment(\.presentationMode) var presentationMode
     
@@ -23,12 +25,41 @@ struct DrawingView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
+                        if !canvasView.drawing.bounds.isEmpty {
+                            saveAlert = true
+                        } else {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     }) {
                         HStack {
                             Image(systemName: "arrow.left.circle")
-                            Text("Go Back")
+                            Text(canvasView.drawing.bounds.isEmpty ? "Back" : "Save")
                         }
+                    }
+                    .popover(isPresented: $saveAlert) {
+                        VStack {
+                            Text("Save Drawing").font(.title)
+                            TextField("Title", text: $titleText)
+                            Button("Save") {
+                                if !titleText.isEmpty {
+                                    saveDrawing()
+                                    saveAlert = false
+                                    self.presentationMode.wrappedValue.dismiss()
+                                }
+                            }
+                            .padding()
+                            .background(Color(red: 0, green: 0, blue: 0.5))
+                            .foregroundColor(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
+                            Button("Cancel") {
+                                saveAlert = false
+                            }
+                            .padding()
+                            .background(Color(red: 0, green: 0, blue: 0.5))
+                            .foregroundColor(.red)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }.padding()
                     }
                 }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -63,7 +94,7 @@ struct DrawingView: View {
     }
     private func saveDrawing() {
         let image = canvasView.drawing.image(from: canvasView.bounds, scale: UIScreen.main.scale)
-        let drawing = Drawing(title: "Best Drawing", drawing: canvasView.drawing, image: image)
+        let drawing = Drawing(title: titleText, drawing: canvasView.drawing, image: image)
         DrawingEntity.insert(in: managedObjectContext, drawing: drawing)
     }
 }
