@@ -11,9 +11,10 @@ import PencilKit
 import CoreData
 
 struct DrawingView: View {
+    var drawing: Drawing? = nil
+    
     @Environment(\.undoManager) private var undoManager
     @State private var canvasView = PKCanvasView()
-    @State private var drawing: Drawing? = nil
     @State private var deleteAlert = false
     @State private var saveAlert = false
     @State private var titleText = ""
@@ -21,7 +22,7 @@ struct DrawingView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        CanvasView(canvasView: $canvasView, onSaved: saveDrawing)
+        CanvasView(canvasView: $canvasView, drawing: drawing)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -33,11 +34,12 @@ struct DrawingView: View {
                     }) {
                         HStack {
                             Image(systemName: "arrow.left.circle")
-                            Text(canvasView.drawing.bounds.isEmpty ? "Back" : "Save")
+                            Text("Save")
                         }
                     }
                     .popover(isPresented: $saveAlert) {
-                        VStack {
+                        
+                        Form {
                             Text("Save Drawing").font(.title)
                             TextField("Title", text: $titleText)
                             Button("Save") {
@@ -47,18 +49,11 @@ struct DrawingView: View {
                                     self.presentationMode.wrappedValue.dismiss()
                                 }
                             }
-                            .padding()
-                            .background(Color(red: 0, green: 0, blue: 0.5))
-                            .foregroundColor(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                             Button("Cancel") {
                                 saveAlert = false
                             }
-                            .padding()
-                            .background(Color(red: 0, green: 0, blue: 0.5))
                             .foregroundColor(.red)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         }.padding()
                     }
                 }
@@ -72,7 +67,7 @@ struct DrawingView: View {
                             Alert(title: Text("Are you sure you want to delete?"),
                                   message: nil,
                                   primaryButton: .destructive(Text("Delete")) {
-                                deleteDrawing()
+                                self.presentationMode.wrappedValue.dismiss()
                             }
                                   , secondaryButton: .cancel())
                         }
@@ -88,9 +83,6 @@ struct DrawingView: View {
                     })
                 }
             }.navigationBarBackButtonHidden(true)
-    }
-    private func deleteDrawing() {
-        canvasView.drawing = PKDrawing()
     }
     private func saveDrawing() {
         let image = canvasView.drawing.image(from: canvasView.bounds, scale: UIScreen.main.scale)

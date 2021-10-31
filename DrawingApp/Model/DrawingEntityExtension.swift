@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import PencilKit
 
 extension DrawingEntity {
     static func insert(in context: NSManagedObjectContext, drawing: Drawing) {
@@ -16,6 +17,16 @@ extension DrawingEntity {
         record.date = Date()
         record.drawing = drawing.drawing.dataRepresentation()
         record.image = drawing.image
+    }
+    
+    static func preview(in context: NSManagedObjectContext) -> DrawingEntity {
+        let record = DrawingEntity(context: context)
+        record.drawing = PKDrawing().dataRepresentation()
+        record.image = UIImage(named: "previewPNG")
+        record.date = Date()
+        record.id = UUID()
+        record.name = "preview"
+        return record
     }
     
     func dateString() -> String? {

@@ -9,6 +9,8 @@ import Foundation
 
 import Foundation
 import CoreData
+import UIKit
+import PencilKit
 
 class CoreDataStack: ObservableObject {
     private let persistentContainer: NSPersistentContainer
@@ -40,6 +42,7 @@ class CoreDataStack: ObservableObject {
     
     static var preview: CoreDataStack = {
         let coreDataStack = CoreDataStack(inMemory: true)
+        DrawingEntity.insert(in: coreDataStack.managedObjectContext, drawing: Drawing(title: "Hello", drawing: PKDrawing(), image: UIImage(systemName: "globe.americas.fill")!))
         coreDataStack.save()
         return coreDataStack
     }()

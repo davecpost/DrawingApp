@@ -13,9 +13,16 @@ struct DrawingListView: View {
     var body: some View {
         NavigationView {
             List(drawingEntities, id: \.self) { drawing in
-                HStack {
-                    Text(drawing.name ?? "")
-                    Text(drawing.dateString() ?? "")
+                NavigationLink(destination: DrawingDetailView(drawingEntity: drawing)){
+                    HStack {
+                        VStack {
+                            Text(drawing.name ?? "")
+                            Text(drawing.dateString() ?? "")
+                        }
+                        Image(uiImage: (drawing.image as? UIImage ?? UIImage(systemName: "x.square")!))
+                            .resizable()
+                            .scaledToFit()
+                    }
                 }
             }
             .navigationTitle("Drawings")
@@ -34,6 +41,6 @@ struct DrawingListView: View {
 
 struct DrawingListView_Previews: PreviewProvider {
     static var previews: some View {
-        DrawingListView()
+        DrawingListView().environment(\.managedObjectContext, CoreDataStack.preview.managedObjectContext)
     }
 }

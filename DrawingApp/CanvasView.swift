@@ -12,39 +12,24 @@ import PencilKit
 
 struct CanvasView {
     @Binding var canvasView: PKCanvasView
-    let onSaved: () -> Void
+    var drawing: Drawing?
     @State var toolPicker = PKToolPicker()
 }
 
 extension CanvasView: UIViewRepresentable {
-    func makeUIView(context: Context) -> PKCanvasView {
-        canvasView.tool = PKInkingTool(.pen, color: .gray, width: 10)
-        canvasView.drawingPolicy = .anyInput
-        showToolPicker()
-        return canvasView
-    }
-    
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
         
     }
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator(canvasView: $canvasView, onSaved: onSaved)
-    }
-    
-    func showToolPicker() {
+    func makeUIView(context: Context) -> PKCanvasView {
+        canvasView.tool = PKInkingTool(.pen, color: .gray, width: 10)
+        canvasView.drawingPolicy = .anyInput
         toolPicker.setVisible(true, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         canvasView.becomeFirstResponder()
-    }
-}
-
-class Coordinator: NSObject {
-    var canvasView: Binding<PKCanvasView>
-    let onSaved: () -> Void
-    
-    init(canvasView: Binding<PKCanvasView>, onSaved: @escaping () -> Void) {
-        self.canvasView = canvasView
-        self.onSaved = onSaved
+        if let drawing = drawing {
+            canvasView.drawing = drawing.drawing
+        }
+        return canvasView
     }
 }
