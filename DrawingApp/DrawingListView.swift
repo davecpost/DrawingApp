@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DrawingListView: View {
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \DrawingEntity.date, ascending: true)])
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \DrawingEntity.date, ascending: false)])
     private var drawingEntities: FetchedResults<DrawingEntity>
     var body: some View {
         NavigationView {

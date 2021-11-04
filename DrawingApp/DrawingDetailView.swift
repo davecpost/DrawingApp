@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DrawingDetailView: View {
-    var drawingEntity: DrawingEntity
+    @ObservedObject var drawingEntity: DrawingEntity
     var body: some View {
         VStack() {
             Image(uiImage: ((drawingEntity.image as? UIImage) ?? UIImage(systemName: "x.square"))!)

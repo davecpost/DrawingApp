@@ -38,16 +38,14 @@ struct DrawingView: View {
         CanvasView(canvasView: $canvasView)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        if !canvasView.drawing.bounds.isEmpty {
-                            saveAlert = true
-                        } else {
+                    Button("Save") {
+                        if drawingEntity != nil {
+                            saveDrawing()
                             self.presentationMode.wrappedValue.dismiss()
-                        }
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.left.circle")
-                            Text("Save")
+                        } else if !canvasView.drawing.bounds.isEmpty {
+                                saveAlert = true
+                        }else {
+                            self.presentationMode.wrappedValue.dismiss()
                         }
                     }
                     .popover(isPresented: $saveAlert) {
@@ -71,19 +69,6 @@ struct DrawingView: View {
                     }
                 }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        self.deleteAlert = true
-                    }, label: {
-                        Image(systemName: "trash")
-                    })
-                        .alert(isPresented: $deleteAlert) {
-                            Alert(title: Text("Are you sure you want to delete?"),
-                                  message: nil,
-                                  primaryButton: .destructive(Text("Delete")) {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }
-                                  , secondaryButton: .cancel())
-                        }
                     Button(action: {
                         undoManager?.undo()
                     }, label: {
