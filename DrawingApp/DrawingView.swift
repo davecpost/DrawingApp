@@ -11,8 +11,6 @@ import PencilKit
 import CoreData
 
 struct DrawingView: View {
-    var drawing: Drawing? = nil
-    
     @Environment(\.undoManager) private var undoManager
     @State private var canvasView = PKCanvasView()
     @State private var deleteAlert = false
@@ -22,7 +20,7 @@ struct DrawingView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        CanvasView(canvasView: $canvasView, drawing: drawing)
+        CanvasView(canvasView: $canvasView)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -85,9 +83,7 @@ struct DrawingView: View {
             }.navigationBarBackButtonHidden(true)
     }
     private func saveDrawing() {
-        let image = canvasView.drawing.image(from: canvasView.bounds, scale: UIScreen.main.scale)
-        let drawing = Drawing(title: titleText, drawing: canvasView.drawing, image: image)
-        DrawingEntity.insert(in: managedObjectContext, drawing: drawing)
+        DrawingEntity.insert(in: managedObjectContext, name: self.titleText, drawing: self.canvasView.drawing)
     }
 }
 

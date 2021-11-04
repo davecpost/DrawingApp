@@ -12,7 +12,6 @@ import PencilKit
 
 struct CanvasView {
     @Binding var canvasView: PKCanvasView
-    var drawing: Drawing?
     @State var toolPicker = PKToolPicker()
 }
 
@@ -27,9 +26,6 @@ extension CanvasView: UIViewRepresentable {
         toolPicker.setVisible(true, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         canvasView.becomeFirstResponder()
-        if let drawing = drawing {
-            canvasView.drawing = drawing.drawing
-        }
         return canvasView
     }
 }

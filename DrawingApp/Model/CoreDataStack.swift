@@ -42,7 +42,7 @@ class CoreDataStack: ObservableObject {
     
     static var preview: CoreDataStack = {
         let coreDataStack = CoreDataStack(inMemory: true)
-        DrawingEntity.insert(in: coreDataStack.managedObjectContext, drawing: Drawing(title: "Hello", drawing: PKDrawing(), image: UIImage(systemName: "globe.americas.fill")!))
+        DrawingEntity.insert(in: coreDataStack.managedObjectContext, name: "Hello", drawing: PKDrawing())
         coreDataStack.save()
         return coreDataStack
     }()

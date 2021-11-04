@@ -10,13 +10,13 @@ import CoreData
 import PencilKit
 
 extension DrawingEntity {
-    static func insert(in context: NSManagedObjectContext, drawing: Drawing) {
+    static func insert(in context: NSManagedObjectContext, name: String, drawing: PKDrawing) {
         let record = DrawingEntity(context: context)
-        record.name = drawing.title
-        record.id = drawing.id
+        record.name = name
+        record.id = UUID()
         record.date = Date()
-        record.drawing = drawing.drawing.dataRepresentation()
-        record.image = drawing.image
+        record.drawing = drawing.dataRepresentation()
+        record.image = drawing.image(from: drawing.bounds, scale: 1)
     }
     
     static func preview(in context: NSManagedObjectContext) -> DrawingEntity {
