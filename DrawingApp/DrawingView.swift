@@ -12,13 +12,28 @@ import CoreData
 
 struct DrawingView: View {
     @Environment(\.undoManager) private var undoManager
+    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var canvasView = PKCanvasView()
     @State private var deleteAlert = false
     @State private var saveAlert = false
     @State private var titleText = ""
-    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
-    @Environment(\.presentationMode) var presentationMode
     
+    var drawingEntity: DrawingEntity?
+    
+    init(drawingEntity: DrawingEntity?) {
+        self.drawingEntity = drawingEntity
+        if let drawingEntity = drawingEntity,
+           let data = drawingEntity.drawing {
+            do {
+                let drawing = try PKDrawing(data: data)
+                canvasView.drawing = drawing
+            } catch {
+                print(error)
+            }
+        }
+    }
     var body: some View {
         CanvasView(canvasView: $canvasView)
             .toolbar {
@@ -83,12 +98,22 @@ struct DrawingView: View {
             }.navigationBarBackButtonHidden(true)
     }
     private func saveDrawing() {
-        DrawingEntity.insert(in: managedObjectContext, name: self.titleText, drawing: self.canvasView.drawing)
+        if let drawingEntity = drawingEntity {
+            drawingEntity.drawing = self.canvasView.drawing.dataRepresentation()
+            drawingEntity.image = self.canvasView.drawing.image(from: self.canvasView.drawing.bounds, scale: 1)
+        } else {
+            DrawingEntity.insert(in: managedObjectContext, name: self.titleText, drawing: self.canvasView.drawing)
+        }
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print(error)
+        }
     }
 }
 
 struct DrawingView_Previews: PreviewProvider {
     static var previews: some View {
-        DrawingView()
+        DrawingView(drawingEntity: nil)
     }
 }

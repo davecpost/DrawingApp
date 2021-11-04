@@ -16,8 +16,8 @@ struct DrawingDetailView: View {
                 .scaledToFit()
             Text(drawingEntity.dateString() ?? "")
             HStack {
-                Button("Edit") {
-                    
+                NavigationLink("Edit") {
+                    DrawingView(drawingEntity: drawingEntity)
                 }
                 Spacer()
                 Button("Delete") {

@@ -28,7 +28,7 @@ struct DrawingListView: View {
             .navigationTitle("Drawings")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                NavigationLink(destination: {DrawingView()}, label: {
+                    NavigationLink(destination: {DrawingView(drawingEntity: nil)}, label: {
                     Image(systemName: "plus")
                     
                 })
