@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct DrawingDetailView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext: NSManagedObjectContext
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var drawingEntity: DrawingEntity
     var body: some View {
         VStack() {
@@ -21,6 +25,13 @@ struct DrawingDetailView: View {
                 }
                 Spacer()
                 Button("Delete") {
+                    managedObjectContext.delete(drawingEntity)
+                    do {
+                        try managedObjectContext.save()
+                    } catch {
+                        print(error)
+                    }
+                    presentationMode.wrappedValue.dismiss()
                     
                 }
                 .foregroundColor(.red)

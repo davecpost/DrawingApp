@@ -42,30 +42,9 @@ struct DrawingView: View {
                         if drawingEntity != nil {
                             saveDrawing()
                             self.presentationMode.wrappedValue.dismiss()
-                        } else if !canvasView.drawing.bounds.isEmpty {
-                                saveAlert = true
-                        }else {
-                            self.presentationMode.wrappedValue.dismiss()
+                        } else {
+                            saveAlert = true
                         }
-                    }
-                    .popover(isPresented: $saveAlert) {
-                        
-                        Form {
-                            Text("Save Drawing").font(.title)
-                            TextField("Title", text: $titleText)
-                            Button("Save") {
-                                if !titleText.isEmpty {
-                                    saveDrawing()
-                                    saveAlert = false
-                                    self.presentationMode.wrappedValue.dismiss()
-                                }
-                            }
-                            
-                            Button("Cancel") {
-                                saveAlert = false
-                            }
-                            .foregroundColor(.red)
-                        }.padding()
                     }
                 }
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -81,6 +60,29 @@ struct DrawingView: View {
                     })
                 }
             }.navigationBarBackButtonHidden(true)
+            .popover(isPresented: $saveAlert) {
+                
+                Form {
+                    Text("Save Drawing").font(.title)
+                    TextField("Title", text: $titleText)
+                    Button("Save") {
+                        saveDrawing()
+                        saveAlert = false
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    .disabled(titleText.isEmpty)
+                    
+                    Button("Cancel") {
+                        saveAlert = false
+                    }
+                    Button("Discard") {
+                        saveAlert = false
+                        canvasView.drawing = PKDrawing()
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                    .foregroundColor(.red)
+                }.padding()
+            }
     }
     private func saveDrawing() {
         if let drawingEntity = drawingEntity {
