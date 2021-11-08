@@ -14,14 +14,12 @@ struct DrawingListView: View {
         NavigationView {
             List(drawingEntities, id: \.self) { drawing in
                 NavigationLink(destination: DrawingDetailView(drawingEntity: drawing)){
-                    HStack {
-                        VStack {
-                            Text(drawing.name ?? "")
-                            Text(drawing.dateString() ?? "")
-                        }
+                    VStack {
                         Image(uiImage: (drawing.image as? UIImage ?? UIImage(systemName: "x.square")!))
                             .resizable()
                             .scaledToFit()
+                        Text(drawing.name ?? "")
+                        Text(drawing.dateString() ?? "")
                     }
                 }
             }
