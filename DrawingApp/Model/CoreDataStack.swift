@@ -13,6 +13,7 @@ import UIKit
 import PencilKit
 
 class CoreDataStack: ObservableObject {
+    static let shared = CoreDataStack()
     private let persistentContainer: NSPersistentContainer
     var managedObjectContext: NSManagedObjectContext {
         persistentContainer.viewContext

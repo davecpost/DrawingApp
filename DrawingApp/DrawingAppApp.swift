@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct DrawingAppApp: App {
-    private let coreDataStack = CoreDataStack()
+    private let coreDataStack = CoreDataStack.shared
     var body: some Scene {
         WindowGroup {
             ContentView()

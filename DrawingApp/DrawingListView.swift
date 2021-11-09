@@ -15,7 +15,7 @@ struct DrawingListView: View {
             List(drawingEntities, id: \.self) { drawing in
                 NavigationLink(destination: DrawingDetailView(drawingEntity: drawing)){
                     VStack {
-                        Image(uiImage: (drawing.image as? UIImage ?? UIImage(systemName: "x.square")!))
+                        Image(uiImage: (drawing.image ?? UIImage(systemName: "x.square")!))
                             .resizable()
                             .scaledToFit()
                         Text(drawing.name ?? "")
@@ -28,7 +28,6 @@ struct DrawingListView: View {
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink(destination: {DrawingView(drawingEntity: nil)}, label: {
                     Image(systemName: "plus")
-                    
                 })
                 }
             }

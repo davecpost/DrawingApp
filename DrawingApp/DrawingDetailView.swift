@@ -15,7 +15,7 @@ struct DrawingDetailView: View {
     @ObservedObject var drawingEntity: DrawingEntity
     var body: some View {
         VStack() {
-            Image(uiImage: ((drawingEntity.image as? UIImage) ?? UIImage(systemName: "x.square"))!)
+            Image(uiImage: ((drawingEntity.image) ?? UIImage(systemName: "x.square"))!)
                 .resizable()
                 .scaledToFit()
             Text(drawingEntity.dateString() ?? "")
@@ -26,6 +26,7 @@ struct DrawingDetailView: View {
                 Spacer()
                 Button("Delete") {
                     managedObjectContext.delete(drawingEntity)
+                    CoreDataStack.shared.save()
                     presentationMode.wrappedValue.dismiss()
                     
                 }
