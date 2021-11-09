@@ -26,11 +26,6 @@ struct DrawingDetailView: View {
                 Spacer()
                 Button("Delete") {
                     managedObjectContext.delete(drawingEntity)
-                    do {
-                        try managedObjectContext.save()
-                    } catch {
-                        print(error)
-                    }
                     presentationMode.wrappedValue.dismiss()
                     
                 }

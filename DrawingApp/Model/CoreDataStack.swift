@@ -33,11 +33,14 @@ class CoreDataStack: ObservableObject {
     
     func save() {
         guard managedObjectContext.hasChanges else { return }
-        do {
-            try managedObjectContext.save()
-        } catch {
-            print(error)
+        managedObjectContext.perform {
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                print(error)
+            }
         }
+        
     }
     
     static var preview: CoreDataStack = {
