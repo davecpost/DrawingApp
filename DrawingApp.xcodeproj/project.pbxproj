@@ -21,6 +21,7 @@
 		7DBF410C2723537A0094B1F9 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF410B2723537A0094B1F9 /* CanvasView.swift */; };
 		7DBF410E272353A80094B1F9 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF410D272353A80094B1F9 /* DrawingView.swift */; };
 		7DBF4112272354880094B1F9 /* DrawingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBF4111272354880094B1F9 /* DrawingListView.swift */; };
+		7DD688E6273AE286000739A3 /* UIImageValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD688E5273AE286000739A3 /* UIImageValueTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		7DBF410B2723537A0094B1F9 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		7DBF410D272353A80094B1F9 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		7DBF4111272354880094B1F9 /* DrawingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingListView.swift; sourceTree = "<group>"; };
+		7DD688E5273AE286000739A3 /* UIImageValueTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageValueTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				7D9851202729B03E0027ED37 /* DrawingModel.xcdatamodeld */,
 				7D9851232729B10D0027ED37 /* CoreDataStack.swift */,
 				7D9851252729B20B0027ED37 /* DrawingEntityExtension.swift */,
+				7DD688E5273AE286000739A3 /* UIImageValueTransformer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				7D98520D272CA07B0027ED37 /* DrawingDetailView.swift in Sources */,
 				7D9851262729B20B0027ED37 /* DrawingEntityExtension.swift in Sources */,
 				7D9851222729B03E0027ED37 /* DrawingModel.xcdatamodeld in Sources */,
+				7DD688E6273AE286000739A3 /* UIImageValueTransformer.swift in Sources */,
 				7DBF4112272354880094B1F9 /* DrawingListView.swift in Sources */,
 				7D9851242729B10D0027ED37 /* CoreDataStack.swift in Sources */,
 			);

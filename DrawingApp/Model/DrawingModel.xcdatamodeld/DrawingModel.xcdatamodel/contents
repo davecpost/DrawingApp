@@ -4,10 +4,10 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="drawing" optional="YES" attributeType="Binary"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="image" optional="YES" attributeType="Transformable"/>
+        <attribute name="image" optional="YES" attributeType="Transformable" valueTransformerName="UIImageValueTransformer" customClassName="UIKit.UIImage"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="DrawingEntity" positionX="-63" positionY="-18" width="128" height="14"/>
+        <element name="DrawingEntity" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

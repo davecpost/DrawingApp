@@ -91,6 +91,7 @@ struct DrawingView: View {
         } else {
             DrawingEntity.insert(in: managedObjectContext, name: self.titleText, drawing: self.canvasView.drawing)
         }
+        
     }
 }
 
